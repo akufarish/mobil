@@ -16,7 +16,9 @@ export default {
             },
             colors: {
                 primary: "#5f0606",
-                danger: "#FCDECE"
+                danger: "#FCDECE",
+                lightmode: "#fff1f1",
+                primary_50: "#fe3535",
             }
         },
     },

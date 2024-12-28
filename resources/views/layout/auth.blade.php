@@ -851,40 +851,10 @@
     @endif
 </head>
 <body class="overflow-x-hidden">
-<div class="flex flex-col min-h-screen">
-    <div class="">
-        <nav class="w-full bg-primary h-16 py-2">
-            <ul class="mx-12 text-white flex items-center justify-between">
-                <li class="">
-                    <img src="img/logo.png" alt="" class="w-24 h-10">
-                </li>
-                <li class="flex gap-5 items-center">
-                    <a href="#">Home</a>
-                    <a href="#">Armada Kami</a>
-                    <a href="#">Hubungi Kami</a>
-                </li>
-            </ul>
-        </nav>
         <div class="">
+            @include('sweetalert::alert')
             @yield("content")
         </div>
     </div>
-    <footer class="bg-primary text-white flex justify-between items-center p-6">
-        <div class="flex flex-col">
-            <img src="img/logo.png" class="w-[118px] h-[50px]" alt="Logo">
-            <p class="footer-logo-text"><strong>Layanan Transportasi Terbaik untuk Anda</strong></p>
-        </div>
-        <div class="footer-center">
-            <p><strong>Business Hours</strong></p>
-            <p>Buka Setiap Hari 24 Jam</p>
-        </div>
-        <div class="footer-right">
-            <p><strong>Hubungi Kami</strong></p>
-            <p>Phone: +6285350468967</p>
-            <p>Email: thoyibtravel@gmail.com</p>
-            <p>Alamat: Jl. Insgub Gang Pelita IV</p>
-        </div>
-    </footer>
-</div>
 </body>
 </html>
