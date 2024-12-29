@@ -66,8 +66,8 @@
                         <div class="flex flex-col gap-5">
                             <img src="{{ asset("storage/{$mobil->gambar}") }}" alt="" class="w-[180px] h-[106px]">
                             <h1 class="font-bold">{{$mobil->merk}}</h1>
-                            <a href="" class="px-6 py-2 rounded-md flex justify-center items-center bg-green-500 text-white">Pesan Via WhatsApp</a>
-                            <a href="" class="px-6 py-2 rounded-md flex justify-center items-center bg-blue-500 text-white">Pesan Via Telpon</a>
+                            <a href="https://wa.me/6285350468967" target="_blank" class="px-6 py-2 rounded-md flex justify-center items-center bg-green-500 text-white">Pesan Via WhatsApp</a>
+                            <a href="tel:+6285350468967" class="px-6 py-2 rounded-md flex justify-center items-center bg-blue-500 text-white">Pesan Via Telpon</a>
                         </div>
                     </div>
                 @endforeach
