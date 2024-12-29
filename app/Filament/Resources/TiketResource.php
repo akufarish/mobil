@@ -15,6 +15,7 @@ use Filament\Forms\Components\TimePicker;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -68,7 +69,12 @@ class TiketResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('layanan.nama_paket'),
+                TextColumn::make('titik_jemput'),
+                TextColumn::make('tanggal_keberangkatan'),
+                TextColumn::make('jam_berangkat'),
+                TextColumn::make('nomor_kursi'),
+                TextColumn::make('harga'),
             ])
             ->filters([
                 //
