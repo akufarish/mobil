@@ -57,6 +57,7 @@ class TiketResource extends Resource
                 ->afterStateUpdated(function (callable $set, $state) use ($mobil) {
                     $selectedMobil = $mobil->firstWhere('id', $state);
                     $set('harga', $selectedMobil?->harga);
+                    $set('total_tagihan', $selectedMobil?->harga);
                 }),
                 TextInput::make("harga")->default(0),
                 TextInput::make("total_tagihan")->default(0),
