@@ -19,6 +19,8 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Actions\Action;
+
 
 class TiketResource extends Resource
 {
@@ -81,6 +83,10 @@ class TiketResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Action::make('Download Pdf')
+                    ->icon('heroicon-o-document-arrow-down')
+                    ->url(fn(Pesanan $record): string => route('pesanan.pdf', ['pesanan' => $record]))
+                    ->openUrlInNewTab(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

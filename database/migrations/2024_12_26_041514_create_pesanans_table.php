@@ -25,6 +25,7 @@ return new class extends Migration
             $table->boolean("konfirmasi_pembayaran")->default(false);
             $table->integer("nomor_kursi");
             $table->integer("harga");
+            $table->enum("status", ["lunas", "belum lunas"])->default("belum lunas");
             $table->integer("total_tagihan");
             $table->timestamps();
 
