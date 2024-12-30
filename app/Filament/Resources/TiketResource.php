@@ -57,8 +57,8 @@ class TiketResource extends Resource
                         return $get('layananOptions') ?? [];
                     }
                 )->reactive()
-                ->afterStateUpdated(function (callable $set, $state) use ($mobil) {
-                    $selectedMobil = $mobil->firstWhere('id', $state);
+                ->afterStateUpdated(function (callable $set, $state) use ($layanan) {
+                    $selectedMobil = $layanan->firstWhere('id', $state);
                     $set('harga', $selectedMobil?->harga);
                     $set('total_tagihan', $selectedMobil?->harga);
                 }),
