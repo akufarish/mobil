@@ -27,6 +27,7 @@ class AdminPanelProvider extends PanelProvider
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->default()
             ->id('admin')
+            ->darkMode(false)
             ->path('admin')
             ->login()
             ->brandName("Thoyyib Travel")
