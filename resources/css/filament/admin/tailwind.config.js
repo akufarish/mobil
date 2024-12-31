@@ -14,10 +14,10 @@ export default {
                 danger: "#FCDECE",
                 secondary: "#D36341",
                 lightmode: "#fff1f1",
-                custom_red_100: "#ffdfdf",
+                custom_red_100: "#dc240a",
                 custom_red_400: "#ff6565",
-                custom_red_200: "#ffc5c5",
-                custom_red_950: "#5f0606",
+                custom_red_200: "#f33d16",
+                custom_red_950: "#dc240a",
             }
         }
     }

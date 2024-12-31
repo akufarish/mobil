@@ -31,7 +31,10 @@ class PesananController extends Controller
         ]);
 
         
-        $item = InvoiceItem::make('Tiket')->pricePerUnit($pesanan->total_tagihan);
+        $item = InvoiceItem::make('Tiket')
+        ->pricePerUnit($pesanan->total_tagihan)
+        ->quantity($pesanan->jumlah_penumpang);
+        
         
         $invoice = Invoice::make()
         ->buyer($customer)

@@ -28,6 +28,8 @@ class TiketResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?int $navigationSort = 3;
+
     public static function form(Form $form): Form
     {
         $mobil = Mobil::all();
@@ -41,13 +43,19 @@ class TiketResource extends Resource
                 DatePicker::make('tanggal_keberangkatan'),
                 TimePicker::make('jam_berangkat'),
                 TextInput::make('Tujuan'),
-                TextInput::make('Jumlah penumpang'),
+                TextInput::make('jumlah_penumpang')
+                    ->reactive()
+                    ->afterStateUpdated(function (callable $set, $state, callable $get) {
+                        $harga = $get('harga') ?? 0;
+                        $totalHarga = $harga * $state;
+                        $set('total_tagihan', $totalHarga);
+                    }),
                 Select::make('mobil_id')->options($mobil->pluck('merk', 'id'))
-                ->reactive()->afterStateUpdated(function (callable $set, $state) use ($layanan) {
-                    $filteredLayanan = $layanan->where('mobil_id', $state)->pluck('nama_paket', 'id');
-                    $set('layanan_id', null); 
-                    $set('layananOptions', $filteredLayanan);
-                }),
+                    ->reactive()->afterStateUpdated(function (callable $set, $state) use ($layanan) {
+                        $filteredLayanan = $layanan->where('mobil_id', $state)->pluck('nama_paket', 'id');
+                        $set('layanan_id', null); 
+                        $set('layananOptions', $filteredLayanan);
+                    }),
                 Select::make('metode_pembayaran')->options($metodePembayaran),
                 TextInput::make('nomor_kursi'),
                 TextInput::make('titik_jemput'),
@@ -57,15 +65,19 @@ class TiketResource extends Resource
                         return $get('layananOptions') ?? [];
                     }
                 )->reactive()
-                ->afterStateUpdated(function (callable $set, $state) use ($layanan) {
+                ->afterStateUpdated(function (callable $set, $state, callable $get) use ($layanan) {
                     $selectedMobil = $layanan->firstWhere('id', $state);
-                    $set('harga', $selectedMobil?->harga);
-                    $set('total_tagihan', $selectedMobil?->harga);
+                    $harga = $selectedMobil?->harga ?? 0;
+                    $jumlahPenumpang = $get('jumlah_penumpang') ?? 1;
+                    $totalTagihan = $harga * $jumlahPenumpang;
+                    $set('harga', $harga);
+                    $set('total_tagihan', $totalTagihan);
                 }),
                 TextInput::make("harga")->default(0),
                 TextInput::make("total_tagihan")->default(0),
             ]);
     }
+    
 
     public static function table(Table $table): Table
     {

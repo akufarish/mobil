@@ -2,35 +2,31 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\MobilResource\Pages;
-use App\Filament\Resources\MobilResource\RelationManagers;
-use App\Models\Mobil;
+use App\Filament\Resources\UserResource\Pages;
+use App\Filament\Resources\UserResource\RelationManagers;
+use App\Models\User;
 use Filament\Forms;
-use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\ImageColumn;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Filament\Tables\Columns\TextColumn; 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class MobilResource extends Resource
+class UserResource extends Resource
 {
-    protected static ?string $model = Mobil::class;
+    protected static ?string $model = User::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    
+
+    protected static ?int $navigationSort = 3;
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('merk'),
-                Forms\Components\TextInput::make('status'),
-                Forms\Components\TextInput::make('harga'),
-                FileUpload::make('gambar'),
+                //
             ]);
     }
 
@@ -38,10 +34,9 @@ class MobilResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('merk'),
-                TextColumn::make('status'),
-                TextColumn::make('harga'),
-                ImageColumn::make('gambar'),
+                TextColumn::make('name'),
+                TextColumn::make('email'),
+                
             ])
             ->filters([
                 //
@@ -66,9 +61,9 @@ class MobilResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListMobils::route('/'),
-            'create' => Pages\CreateMobil::route('/create'),
-            'edit' => Pages\EditMobil::route('/{record}/edit'),
+            'index' => Pages\ListUsers::route('/'),
+            'create' => Pages\CreateUser::route('/create'),
+            'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
     }
 }

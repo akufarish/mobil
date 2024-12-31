@@ -16,12 +16,13 @@ return new class extends Migration
             $table->unsignedBigInteger("mobil_id");
             $table->unsignedBigInteger("layanan_id");
             $table->string("nama");
-            $table->integer("no_hp");
+            $table->string("no_hp");
             $table->date("tanggal_keberangkatan");
             $table->time("jam_berangkat");
             $table->string("titik_jemput");
             $table->string("titik_antar");  
             $table->string("metode_pembayaran");
+            $table->integer("jumlah_penumpang");
             $table->boolean("konfirmasi_pembayaran")->default(false);
             $table->integer("nomor_kursi");
             $table->integer("harga");
