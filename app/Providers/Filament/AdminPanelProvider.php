@@ -31,7 +31,7 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->brandName("Thoyyib Travel")
-            ->brandLogo("img/logo.png")
+            ->brandLogo(asset("img/logo.png"))
             ->favicon("img/logo.png")
             ->brandLogoHeight("2rem")
             ->colors([
